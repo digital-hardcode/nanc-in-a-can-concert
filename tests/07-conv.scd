@@ -26,6 +26,7 @@
 ~visualize.(~myCanon);
 
 
+
 ~myCanon
 .canon //we extract the canon from the data structure that is returned
 .collect(~instrument.([\dist2,\dist2], amp: 1, repeat: 2)) // we pass each voice into our ~instrument. At this point ~instrument is returning a `MakePbind`, because it has been partially applied with `([Symbol], Amp, Repeat)`. This line will return: `[Pbind, Pbind, Pbind, Pbind]`
