@@ -1,6 +1,6 @@
 (
 ~canonConfig = (
-  baseTempo: 244,
+  baseTempo: 222,
   // baseTempo: 50,
   melody: [
     (dur: 1, note: 60),
@@ -10,9 +10,10 @@
     (dur: 1/4, note: 67),
     (dur: 1/16, note: 72),
     (dur: 1/8, note: 68),
-    (dur: 1, note: 65),
+    (dur: 1/8, note: 65),
     (dur: 1, note: 75),
     (dur: 1, note: 70),
+    (dur: 1, note: 74),
   ].pyramid.mirror.lace(96),
   // ].pyramid.mirror.pyramid,
   voices: [ // Note that voices and tempos should be arrays of the same size

@@ -12,12 +12,12 @@
     (dur: 1/4, note: 70),
     (dur: 1/2, note: 61),
     (dur: 1/4, note: 65),
-  ].pyramid.mirror,
+  ].pyramid,
   voices: [ // Note that voices and tempos should be arrays of the same size
     (transp: 0, amp: 0.5),
     (transp: 7, amp: 0.25),
-    (transp: -12, amp: 2),
-    (transp: -24, amp: 1)
+    (transp: 12, amp: 0.5),
+    (transp: -12, amp: 0.75)
   ],
   tempos: [
     (tempo: 100,  percentage: 20),

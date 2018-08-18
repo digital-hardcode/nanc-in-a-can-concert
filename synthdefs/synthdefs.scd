@@ -1,5 +1,5 @@
 SynthDef(\dist, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=0.001, sus=0.05, rel=0.6|
+|freq=440.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=0.001, sus=0.05, rel=0.6|
 
 	var sig, env;
 
@@ -11,11 +11,11 @@ SynthDef(\dist, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 SynthDef(\dist3, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=0.001, sus=0.05, rel=0.6|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=0.001, sus=0.05, rel=0.6|
 
 	var sig, env;
 
@@ -27,29 +27,29 @@ SynthDef(\dist3, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 SynthDef(\dist2, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=0.001, sus=0.05, rel=1.8|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=0.001, sus=0.05, rel=1.8|
 
 	var sig, env;
 
 	sig = RLPF.ar(WhiteNoise.ar(LFNoise2.kr(3,3,100)).tanh,freq*[4,6],0.01)/2;
 
-	sig = RLPF.ar(sig + ( LFSaw.ar(freq) * 1.33 ).tanh, freq, 0.25 ).tanh / 4;
+	sig = RLPF.ar(sig + ( LFSaw.ar(freq) * 1.33 ).tanh, freq, 0.2 ).tanh / 4;
 
 	env = EnvGen.kr( Env.perc(att,rel), doneAction: 2 );
 
 	sig = sig * env;
 
-	Out.ar( out, sig / 2 );
+	Out.ar( out, sig * amp );
 
 }).store;
 
 
 SynthDef(\distPad, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=1.5, sus=0.1, rel=3.5|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=1.5, sus=0.1, rel=3.5|
 
 	var sig, env;
 
@@ -61,12 +61,12 @@ SynthDef(\distPad, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 
 SynthDef(\distPad2, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=1.5, sus=0.1, rel=3.5|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=1.5, sus=0.1, rel=3.5|
 
 	var sig, env;
 
@@ -80,12 +80,12 @@ SynthDef(\distPad2, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 
 SynthDef(\distPad3, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=1.5, sus=0.1, rel=3.5|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=1.5, sus=0.1, rel=3.5|
 
 	var sig, env;
 
@@ -101,12 +101,12 @@ SynthDef(\distPad3, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 
 SynthDef(\tranceBazz, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=0.01, sus=0.1, rel=0.2|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=0.01, sus=0.1, rel=0.2|
 
 	var sig, env;
 
@@ -120,13 +120,13 @@ SynthDef(\tranceBazz, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 
 
 SynthDef(\tranceBazz2, {
-|freq=1.0, decayTime=0.5, amp=0.75, temp=100, out=0, done=2, pan=0, att=0.01, sus=0.1, rel=0.2|
+|freq=1.0, decayTime=0.5, amp=0.2, temp=100, out=0, done=2, pan=0, att=0.01, sus=0.1, rel=0.2|
 
 	var sig, env;
 
@@ -140,7 +140,7 @@ SynthDef(\tranceBazz2, {
 
 	sig = sig * env;
 
-	Out.ar( out, sig );
+	Out.ar( out, sig * amp );
 
 }).store;
 
