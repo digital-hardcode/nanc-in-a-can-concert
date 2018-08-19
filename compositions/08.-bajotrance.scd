@@ -1,49 +1,69 @@
 (
+
 ~canonConfig = (
-  cp: 44,
+  baseTempo: 600,
   melody: [
     (dur: 1, note: 60-36),
-    (dur: 1, note: 62-36),
+    (dur: 1, note: 60-36),
+    (dur: 1/2, note: 62-36),
     (dur: 1, note: 63-36),
-    (dur: 1, note: 65-36),
-    (dur: 1, note: 63-36),
+    (dur: 1/2, note: 65-36),
+    (dur: 1, note: 61-36),
     (dur: 1, note: 67-36),
-    (dur: 1, note: 68-36),
+    (dur: 1/2, note: 68-36),
     (dur: 1, note: 70-36),
-    (dur: 1, note: 65-36),
-    (dur: 1, note: 75-36),
-    (dur: 1, note: 74-36),
-  ].lace(44),
-  voices: [
-    (tempo: 320, transp: 0),
-    (tempo: 320*4, transp: 12),
-    (tempo: 320*0.75, transp: -12),
-    (tempo: 320*1.5, transp: 12)
+  ].pyramid.mirror.pyramid,
+  // ].pyramid.mirror.pyramid,
+  voices: [ // Note that voices and tempos should be arrays of the same size
+    (transp: 0, amp: 0.75),
+    (transp: -7, amp: 0.55),
+    (transp: -12, amp: 0.8),
+    (transp: -24, amp: 1)
+  ],
+  tempos: [
+    (tempo: 50,  percentage: 25),
+    (tempo: 400,  percentage: 25),
+    (tempo: 100, percentage: 25),
+    (tempo: 200, percentage: 25)
   ]
 );
-~myCanon = ~convCanon.(~canonConfig);
+
+~myCanon = ~divCanon.(~canonConfig);
 
 
-~visualize.(~myCanon);
+// ~visualize.(~myCanon);
+
+
+
+// ~visualize.(~myCanon);
 
 
 
 i=INSTRUMENT.new;
+
+k = SynthPlayer(\k,\kickElectro);
+k.seq(\ampTrig,0,"2 0.8",[\speed,2]);
+n = SynthPlayer(\s,\snare1);
+n.seq(\ampTrig,0,[\r,\r,\r,2,\,2,\r,0.3].pyramid,[\speed,4.5]);
+h = SynthPlayer(\h,\hh2);
+h.seq(\ampTrig,0,"0.1x  1xx 0.8",[\speed,3,\repeat,2]);
+h.seq(\ampTrig,0,"0.1x  1xx 0.8",[\speed,4.5]);
+h.seq(\ampTrig,1,"1 0.8",[\speed,9,\repeat,8]);
 
 a=i.sequencer.makeCanonVoice(~myCanon.canon[0]);
 b=i.sequencer.makeCanonVoice(~myCanon.canon[1]);
 c=i.sequencer.makeCanonVoice(~myCanon.canon[2]);
 d=i.sequencer.makeCanonVoice(~myCanon.canon[3]);
 
-w = SynthPlayer("0",\dist);
-y = SynthPlayer("1",\dist2);
-x = SynthPlayer("2",\dist3);
-z = SynthPlayer("3",\dist4);
+w = SynthPlayer("0",\tranceBazz);
+y = SynthPlayer("1",\tranceBazz2);
+x = SynthPlayer("2",\tranceBazz);
+z = SynthPlayer("3",\tranceBazz2);
 
-w.speed=1.35;
-y.speed=1.35;
-x.speed=1.35;
-z.speed=1.35;
+w.speed=1/2;
+y.speed=1/2;
+x.speed=1/2;
+z.speed=1/2;
 
 w.octave=3;
 y.octave=2;
